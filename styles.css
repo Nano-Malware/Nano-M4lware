@@ -1,215 +1,185 @@
-/* Base Styles */
-:root {
-    --deep-black: #96a3eb;
-    --deep-purple: #2a0934;
-    --neon-purple: #b026ff;
-    --shadow-purple: #4a1c67;
-    --light-purple: #9d4edd;
-    --bg-color: #0a0412;
-    --accent-purple: #6e3b9c;
-    --transparent-purple: rgba(176, 38, 255, 0.7);
-    
-    /* New Variables for Social Media Link Position */
-    --social-top: 0px;  /* Adjust the top position of the social links */
-    --social-left: -200px;     /* Adjust the left position of the social links */
-    --social-right: 0;    /* Adjust the right position of the social links */
-    --social-gap: 20px;   /* Space between social icons */
-}
-
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     color: #fff;
 }
 
 body {
     background-color: var(--bg-color);
-    line-height: 1.6;
-    position: relative;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow: hidden;
+    height: 100vh;
+    display: grid;
+    place-items: center;
 }
 
+/* Variables */
+:root {
+    --deep-black: #96a3eb;
+    --deep-purple: #2a0934;
+    --neon-purple: #b026ff;
+    --shadow-purple: #4a1c67;
+    --color-goled: #c5940e;
+    --bg-color: #0a0412;
+    --transparent-purple: rgba(176, 38, 255, 0.7);
+    --profile-width: min(90vw, 820px);
+    --profile-padding: clamp(20px, 5vw, 40px);
+    --profile-image-size: clamp(120px, 30vw, 200px);
+    --name-font-size: clamp(3rem, 8vw, 5rem);
+    --subtitle-font-size: clamp(2rem, 2.5vw, 2.5rem); /* Adjusted to a tighter range */
+    --description-font-size: clamp(1.3rem, 2vw, 1.4rem); 
+}
+
+/* Particle Background */
 #particles-js {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: 0;
 }
 
-/* Flex container to align items horizontally */
+/* Profile Container */
 .profile-container {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     z-index: 1;
-    display: flex;
-    flex-direction: row; /* Align items horizontally */
-    align-items: center;
-    justify-content: center; /* Center all items */
-    gap: 30px; /* Space between items */
+    width: var(--profile-width);
+    padding: var(--profile-padding);
+    gap: 20px;
+    position: relative;
 }
 
-/* Profile Image with independent control */
-.profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 5px solid var(--neon-purple);
-    box-shadow: 0 0 20px var(--neon-purple), 0 0 50px var(--transparent-purple);
-    position: absolute; /* Absolute positioning for independent control */
-    z-index: 500;
-    left: -410px; /* Adjust left position to move the image horizontally */
-    top: -180px; /* Adjust vertical position */
-}
-
-/* Pulsing effect background */
 .profile-container::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 820px;
-    height: 364px;
+    width: 100%;
+    height: 100%;
     background-color: rgba(176, 38, 255, 0.4);
     animation: pulse 1.5s infinite;
     transform: translate(-50%, -50%);
     border-radius: 40px;
-    z-index: 0;
+    z-index: -1;
 }
 
+/* Profile Image */
+.profile-img {
+    width: var(--profile-image-size);
+    height: var(--profile-image-size);
+    border-radius: 50%;
+    border: 5px solid var(--neon-purple);
+    box-shadow: 0 0 20px var(--neon-purple), 0 0 50px var(--transparent-purple);
+}
+
+/* Profile Text */
+.profile-name {
+    font-size: var(--name-font-size);
+    font-weight: bold;
+    color: var(--neon-purple);
+}
+
+.profile-subtitle {
+    font-size: var(--subtitle-font-size);
+    font-weight: 5000;
+    color: var(--color-goled);
+}
+
+.profile-description {
+    font-size: var(--description-font-size);
+    font-weight: 700;
+    color: var(--deep-black);
+    padding: 0 10px;
+}
+
+/* Social Media Links */
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link img {
+    width: clamp(35px, 8vw, 45px);
+    height: clamp(35px, 8vw, 45px);
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.social-link:hover img {
+    transform: scale(1.2);
+}
+
+/* Email Button */
+.email-link {
+    position: relative;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, var(--deep-purple), var(--shadow-purple));
+    border-radius: 25px;
+    text-decoration: none;
+    border: 2px solid var(--color-goled);
+    margin-top: 15px;
+    color: var(--color-goled);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--color-goled);
+    background: linear-gradient(45deg, var(--shadow-purple), var(--deep-purple));
+    color: white;
+}
+
+/* Glow Effect */
+.email-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-goled);
+    opacity: 0;
+    filter: blur(15px);
+    transition: opacity 0.3s ease;
+}
+
+.email-link:hover::before {
+    opacity: 0.3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .profile-container {
+        margin: 20px auto;
+    }
+
+    .email-link {
+        min-width: 200px;
+    }
+
+    .social-link {
+        padding: 5px;
+    }
+}
+
+/* Animations */
 @keyframes pulse {
-    0% {
+    0%, 100% {
         transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+        opacity: 0.8;
     }
     50% {
         transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
-    }
-}
-
-/* Profile Name with independent control */
-.profile-name {
-    font-size: 4rem;
-    font-weight: bold;
-    color: var(--neon-purple);
-    margin-bottom: 10px;
-    position: absolute; /* Absolute positioning for independent control */
-    z-index: 500;
-    left: -199px; /* Adjust the name's position independently */
-    top: -190px; /* Move name downward */
-}
-
-/* Profile Subtitle with independent control */
-.profile-subtitle {
-    font-size: 1.8rem;
-    font-weight: 300;
-    color: var(--light-purple);
-    position: absolute; /* Absolute positioning for independent control */
-    z-index: 500;
-    left: -170px; /* Align subtitle with the name */
-    top: -100px; /* Move subtitle further down */
-}
-
-/* Profile Description */
-.profile-description {
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--deep-black);
-    position: absolute;
-    z-index: 500;
-    left: -182px; /* Align description with the name and subtitle */
-    top: -43px; /* Position it below the subtitle */
-    white-space: nowrap; /* Ensures the text stays in one line */
-    overflow: hidden; /* Hides any overflow */
-}
-
-/* Social Media Links (Instagram and GitHub) */
-.social-links {
-    position: absolute;
-    top: var(--social-top);      /* Using custom CSS variable for position */
-    left: var(--social-left);    /* Using custom CSS variable for left position */
-    right: var(--social-right);  /* Using custom CSS variable for right position */
-    display: flex;
-    gap: var(--social-gap);      /* Custom gap between icons */
-    z-index: 2;
-}
-
-.social-link {
-    display: inline-block;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.social-link:hover {
-    transform: scale(1.2);
-    opacity: 0.8;
-}
-
-.social-img {
-    width: 45px;
-    height: 45px;
-}
-
-/* Mouse Tracker Circle */
-.circle {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: var(--transparent-purple);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 100;
-    box-shadow: 0 0 15px var(--neon-purple);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .profile-name {
-        font-size: 3rem;
-    }
-
-    .profile-subtitle {
-        font-size: 1.5rem;
-    }
-
-    .profile-img {
-        width: 180px;
-        height: 180px;
-    }
-
-    .profile-container::before {
-        width: 750px;
-        height: 300px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .profile-name {
-        font-size: 2.5rem;
-    }
-
-    .profile-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .profile-img {
-        width: 160px;
-        height: 160px;
-    }
-
-    .profile-container::before {
-        width: 600px;
-        height: 250px;
     }
 }
