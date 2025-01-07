@@ -3,37 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NANO-Malware Website</title>
+    <meta name="description" content="NanoMalware's Portfolio - Professional Developer Profile">
+    <meta name="theme-color" content="#b026ff">
+    
+    <title>CV - NanoMalware</title>
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Particle.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- Mouse Tracker Circle -->
-    <div class="circle" id="cursor"></div>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="cyber-spinner">
+            <div class="spinner-inner"></div>
+        </div>
+    </div>
 
     <!-- Particles Background -->
     <div id="particles-js"></div>
+    <div class="cyber-grid"></div>
 
-    <!-- Profile Content -->
-    <div class="profile-container">
-        <!-- Social Media Links controlled by CSS -->
-        <div class="social-links">
-            <a href="https://github.com/Nano-Malware" target="_blank" class="social-link">
-                <img src="png/github.png" alt="GitHub" class="social-img">
-            </a>
-            <a href="https://www.instagram.com/n4n0_malw4re/" target="_blank" class="social-link">
-                <img src="png/instagram.png" alt="Instagram" class="social-img">
-            </a>
-        </div>
-        
-        <img src="png/profimg.jpg" alt="Profile Image" class="profile-img">
-        <h1 class="profile-name">NanoMalware</h1>
-        <h2 class="profile-subtitle">B.Radouane</h2>
-        <!-- New Description Added Here -->
-        <p class="profile-description">H4XØr / K3ep L34rN1nG / 0t4kÚ</p>
-    </div>
+    <!-- Main Profile Section -->
+    <main class="profile-container">
+        <section class="profile-section">
+            <!-- Profile Image -->
+            <div class="image-container">
+                <div class="glitch-wrap">
+                    <img src="png/profimg.jpg" alt="NanoMalware Profile" class="profile-img">
+                    <div class="glitch-effect"></div>
+                </div>
+            </div>
 
-    <!-- Link to JS file -->
-    <script src="script.js"></script>
+            <!-- Profile Info -->
+            <div class="info-container">
+                <h1 class="profile-name" data-value="NanoMalware">NanoMalware</h1>
+                <h2 class="profile-subtitle">B.Radouane</h2>
+                <p class="profile-description">H4XØr / K3ep L34rN1nG / 0t4kÚ</p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://github.com/Nano-Malware" target="_blank" class="social-link">
+                    <img src="png/github.png" alt="GitHub Profile" class="social-img">
+                </a>
+                <a href="https://www.instagram.com/n4n0_malw4re/" target="_blank" class="social-link">
+                    <img src="png/instagram.png" alt="Instagram Profile" class="social-img">
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=radwancraft@gmail.com" target="_blank" class="email-link">
+                    <div class="email-container">
+                        <span class="email-text">radwancraft@gmail.com</span>
+                        <div class="email-glow"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div class="cursor-outer"></div>
+    <div class="cursor-inner"></div>
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
 </body>
 </html>
