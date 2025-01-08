@@ -1,5 +1,7 @@
-/* General Reset */
-* {
+/* ==========================
+   General Reset
+   ========================== */
+   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,24 +17,33 @@ body {
     place-items: center;
 }
 
-/* Variables */
+/* ==========================
+   Variables
+   ========================== */
 :root {
+    --primary-neon: #b026ff;
+    --primary-dark: #2a0934;
+    --primary-gold: #c5940e;
+    --accent-blue: #96a3eb;
+    --bg-dark: #0a0412;
     --deep-black: #96a3eb;
     --deep-purple: #2a0934;
     --neon-purple: #b026ff;
     --shadow-purple: #4a1c67;
-    --color-goled: #c5940e;
+    --color-gold: #c5940e;
     --bg-color: #0a0412;
     --transparent-purple: rgba(176, 38, 255, 0.7);
     --profile-width: min(90vw, 820px);
     --profile-padding: clamp(20px, 5vw, 40px);
     --profile-image-size: clamp(120px, 30vw, 200px);
     --name-font-size: clamp(3rem, 8vw, 5rem);
-    --subtitle-font-size: clamp(2rem, 2.5vw, 2.5rem); /* Adjusted to a tighter range */
-    --description-font-size: clamp(1.3rem, 2vw, 1.4rem); 
+    --subtitle-font-size: clamp(2rem, 2.5vw, 2.5rem);
+    --description-font-size: clamp(1.3rem, 2vw, 1.4rem);
 }
 
-/* Particle Background */
+/* ==========================
+   Particle Background
+   ========================== */
 #particles-js {
     position: fixed;
     top: 0;
@@ -42,7 +53,9 @@ body {
     z-index: 0;
 }
 
-/* Profile Container */
+/* ==========================
+   Profile Container
+   ========================== */
 .profile-container {
     display: flex;
     flex-direction: column;
@@ -69,7 +82,9 @@ body {
     z-index: -1;
 }
 
-/* Profile Image */
+/* ==========================
+   Profile Image
+   ========================== */
 .profile-img {
     width: var(--profile-image-size);
     height: var(--profile-image-size);
@@ -78,7 +93,9 @@ body {
     box-shadow: 0 0 20px var(--neon-purple), 0 0 50px var(--transparent-purple);
 }
 
-/* Profile Text */
+/* ==========================
+   Profile Text
+   ========================== */
 .profile-name {
     font-size: var(--name-font-size);
     font-weight: bold;
@@ -87,8 +104,8 @@ body {
 
 .profile-subtitle {
     font-size: var(--subtitle-font-size);
-    font-weight: 5000;
-    color: var(--color-goled);
+    font-weight: 700;
+    color: var(--color-gold);
 }
 
 .profile-description {
@@ -98,7 +115,9 @@ body {
     padding: 0 10px;
 }
 
-/* Social Media Links */
+/* ==========================
+   Social Media Links
+   ========================== */
 .social-links {
     display: flex;
     gap: 20px;
@@ -118,28 +137,72 @@ body {
     transform: scale(1.2);
 }
 
-/* Email Button */
+/* ==========================
+   Loading Screen
+   ========================== */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cyber-spinner {
+    width: 80px;
+    height: 80px;
+    border: 3px solid transparent;
+    border-top-color: var(--primary-neon);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative;
+}
+
+.spinner-inner {
+    position: absolute;
+    inset: 6px;
+    border: 3px solid transparent;
+    border-top-color: var(--primary-gold);
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite reverse;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================
+   Email Button
+   ========================== */
 .email-link {
     position: relative;
     padding: 10px 20px;
     background: linear-gradient(45deg, var(--deep-purple), var(--shadow-purple));
     border-radius: 25px;
     text-decoration: none;
-    border: 2px solid var(--color-goled);
+    border: 2px solid var(--color-gold);
     margin-top: 15px;
-    color: var(--color-goled);
+    color: var(--color-gold);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .email-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 15px var(--color-goled);
+    box-shadow: 0 0 15px var(--color-gold);
     background: linear-gradient(45deg, var(--shadow-purple), var(--deep-purple));
     color: white;
 }
 
-/* Glow Effect */
 .email-link::before {
     content: "";
     position: absolute;
@@ -147,7 +210,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--color-goled);
+    background: var(--color-gold);
     opacity: 0;
     filter: blur(15px);
     transition: opacity 0.3s ease;
@@ -157,29 +220,118 @@ body {
     opacity: 0.3;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 480px) {
-    .profile-container {
-        margin: 20px auto;
-    }
+/* ==========================
+   Skills Section Styles
+   ========================== */
+.skills-section {
+    width: 100%;
+    padding: 2rem;
+    margin-top: 2rem;
+    background: rgba(10, 4, 18, 0.8);
+    border-radius: 20px;
+    border: 1px solid var(--neon-purple);
+    box-shadow: 0 0 20px rgba(176, 38, 255, 0.2);
+}
 
-    .email-link {
-        min-width: 200px;
-    }
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
-    .social-link {
-        padding: 5px;
+.skill-category {
+    margin-bottom: 1.5rem;
+}
+
+.category-title {
+    color: var(--neon-purple);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+
+.skills-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.skill-item {
+    background: rgba(42, 9, 52, 0.6);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--shadow-purple);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(176, 38, 255, 0.3);
+}
+
+.skill-label {
+    color: var(--color-gold);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.skill-bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-purple), var(--color-gold));
+    border-radius: 5px;
+    animation: fillProgress 1.5s ease-out forwards;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+@keyframes fillProgress {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
     }
 }
 
-/* Animations */
-@keyframes pulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.8;
+/* ==========================
+   Responsive Design
+   ========================== */
+@media (min-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 1;
+}
+
+@media (max-width: 767px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
     }
+    .category-title {
+        font-size: 1.5rem;
+    }
+    .skill-label {
+        font-size: 1rem;
+    }
+}
+
+body {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.scrollable-section {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid var(--neon-purple);
 }
