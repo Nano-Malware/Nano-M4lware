@@ -1,17 +1,23 @@
-// Mouse Tracker Script
-const cursor = document.getElementById("cursor");
+// script.js
 
-document.addEventListener("mousemove", (event) => {
-    cursor.style.transform = `translate(${event.clientX - cursor.offsetWidth / 2}px, ${event.clientY - cursor.offsetHeight / 2}px)`;
+// Loading Screen Handler
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.querySelector('.loading-screen');
+    
+    // Hide loading screen after content loads
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+        }, 1000);
+    });
 });
 
-
-// Particles.js Config
+// Particles.js Configuration
 particlesJS('particles-js', {
     particles: {
         number: {
-            value: 450, // Increased the number of particles to make it look bigger
-            density: { enable: true, value_area: 4500 } // Expanded the area for better coverage
+            value: 450,
+            density: { enable: true, value_area: 4500 }
         },
         color: { value: '#b026ff' },
         opacity: {
@@ -20,16 +26,16 @@ particlesJS('particles-js', {
             anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
         },
         size: {
-            value: 11, // Made particles larger
+            value: 11,
             random: false,
             anim: { enable: true, speed: 5, size_min: 0.1, sync: false }
         },
         line_linked: {
             enable: true,
-            distance: 160, // Increased distance to match larger particles
+            distance: 160,
             color: '#b026ff',
             opacity: 0.6,
-            width: 4 // Increased line width for better visibility
+            width: 4
         },
         move: {
             enable: true,
@@ -47,7 +53,7 @@ particlesJS('particles-js', {
         },
         modes: {
             grab: {
-                distance: 108, // Increased grab distance to match larger scale
+                distance: 108,
                 line_linked: { opacity: 9 }
             }
         }
@@ -55,15 +61,15 @@ particlesJS('particles-js', {
     retina_detect: true
 });
 
-// Hover Animation for Profile Name
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// Glitch Text Effect for Profile Name
+const letters = "?AB%DE0324KL23OP]RS#U32-XYZ&";
 let interval = null;
 
 document.querySelector(".profile-name").onmouseover = (event) => {
     let iteration = 0;
-
+    
     clearInterval(interval);
-
+    
     interval = setInterval(() => {
         event.target.innerText = event.target.innerText
             .split("")
@@ -71,15 +77,14 @@ document.querySelector(".profile-name").onmouseover = (event) => {
                 if (index < iteration) {
                     return event.target.dataset.value[index];
                 }
-
                 return letters[Math.floor(Math.random() * 26)];
             })
             .join("");
-
+        
         if (iteration >= event.target.dataset.value.length) {
             clearInterval(interval);
         }
-
-        iteration += 1 / 4; // Controls the speed of iteration
-    }, 40); // Interval in milliseconds
+        
+        iteration += 1 / 2;
+    }, 60);
 };
